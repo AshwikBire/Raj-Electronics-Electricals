@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raj Electronics & Electricals – TV, Mobile, Fridge Repair in Marki, Maharashtra</title>
+  <meta name="description" content="Raj Electronics & Electricals – Fast & trusted repair of TV, Mobile, Refrigerator, Washing Machine, Fan, Mixer in Marki, Maharashtra. Call Rajendra Bire: 9823627440." />
+  <meta name="keywords" content="electronics repair Marki, TV repair Maharashtra, mobile repair Marki, refrigerator repair, Rajendra Bire electronics, raj electronics Marki" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────────── */
+    :root {
+      --bg1: #0a0e1a;
+      --bg2: #0d1528;
+      --accent: #3b9eff;
+      --accent2: #7c5cfc;
+      --accent3: #00e5c3;
+      --glow: rgba(59,158,255,0.35);
+      --glass-bg: rgba(255,255,255,0.06);
+      --glass-border: rgba(255,255,255,0.14);
+      --glass-blur: blur(18px);
+      --text: #e8eaf6;
+      --muted: rgba(232,234,246,0.55);
+      --radius: 20px;
+      --transition: 0.35s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ─── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg1);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ─── ANIMATED BACKGROUND ────────────────────────────────── */
+    .bg-orbs {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      overflow: hidden;
+    }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.25;
+      animation: floatOrb 14s ease-in-out infinite alternate;
+    }
+    .orb-1 { width: 600px; height: 600px; background: var(--accent2); top: -200px; left: -200px; animation-duration: 16s; }
+    .orb-2 { width: 500px; height: 500px; background: var(--accent); bottom: -150px; right: -150px; animation-duration: 12s; }
+    .orb-3 { width: 350px; height: 350px; background: var(--accent3); top: 40%; left: 40%; animation-duration: 18s; opacity: 0.18; }
+    @keyframes floatOrb {
+      from { transform: translate(0,0) scale(1); }
+      to   { transform: translate(40px,60px) scale(1.1); }
+    }
+
+    /* ─── GLASS CARD ─────────────────────────────────────────── */
+    .glass {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-radius: var(--radius);
+    }
+    .glass:hover {
+      border-color: rgba(59,158,255,0.35);
+      box-shadow: 0 0 28px var(--glow);
+    }
+
+    /* ─── NAV ────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 5%;
+      background: rgba(10,14,26,0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      transition: var(--transition);
+    }
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent3));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-logo i { font-size: 1.4rem; -webkit-text-fill-color: var(--accent3); }
+    .nav-links {
+      display: flex; gap: 32px; list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.88rem; font-weight: 500; color: var(--muted);
+      transition: color var(--transition);
+      letter-spacing: 0.02em;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      padding: 9px 22px; border-radius: 50px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      font-size: 0.85rem; font-weight: 600; color: #fff;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(59,158,255,0.45); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 26px; height: 2px; background: var(--text); border-radius: 4px; transition: var(--transition); }
+    .mobile-menu {
+      display: none; position: fixed; top: 70px; left: 0; right: 0;
+      background: rgba(10,14,26,0.97); backdrop-filter: blur(20px);
+      padding: 24px 5%; flex-direction: column; gap: 20px;
+      border-bottom: 1px solid var(--glass-border); z-index: 99;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1rem; color: var(--muted); padding: 8px 0; border-bottom: 1px solid var(--glass-border); }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    #home {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 120px 5% 80px;
+      position: relative; z-index: 1;
+    }
+    .hero-inner {
+      max-width: 760px; text-align: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 7px 18px; border-radius: 50px;
+      background: rgba(59,158,255,0.12);
+      border: 1px solid rgba(59,158,255,0.28);
+      font-size: 0.8rem; font-weight: 600; color: var(--accent);
+      letter-spacing: 0.05em; text-transform: uppercase;
+      margin-bottom: 28px;
+      animation: fadeUp 0.8s ease forwards;
+    }
+    .hero-badge i { animation: spin 3s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 700; line-height: 1.12;
+      margin-bottom: 20px;
+      animation: fadeUp 0.9s ease 0.1s both;
+    }
+    .hero-title .grad {
+      background: linear-gradient(135deg, var(--accent), var(--accent3));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: 1.05rem; color: var(--muted); line-height: 1.7;
+      max-width: 520px; margin: 0 auto 40px;
+      animation: fadeUp 1s ease 0.2s both;
+    }
+    .hero-btns {
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+      animation: fadeUp 1s ease 0.3s both;
+    }
+    .btn-primary {
+      padding: 14px 32px; border-radius: 50px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      font-size: 0.95rem; font-weight: 600; color: #fff;
+      transition: transform var(--transition), box-shadow var(--transition);
+      display: inline-flex; align-items: center; gap: 9px;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(59,158,255,0.4); }
+    .btn-ghost {
+      padding: 14px 32px; border-radius: 50px;
+      border: 1px solid var(--glass-border);
+      background: var(--glass-bg); backdrop-filter: var(--glass-blur);
+      font-size: 0.95rem; font-weight: 500; color: var(--text);
+      transition: border-color var(--transition), transform var(--transition);
+      display: inline-flex; align-items: center; gap: 9px;
+    }
+    .btn-ghost:hover { border-color: var(--accent3); transform: translateY(-3px); color: var(--accent3); }
+    .hero-stats {
+      display: flex; gap: 40px; justify-content: center; flex-wrap: wrap;
+      margin-top: 60px;
+      animation: fadeUp 1s ease 0.4s both;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem; font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent3));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 2px; letter-spacing: 0.04em; text-transform: uppercase; }
+
+    /* ─── SECTION BASE ───────────────────────────────────────── */
+    section { position: relative; z-index: 1; padding: 90px 5%; }
+    .section-header { text-align: center; margin-bottom: 54px; }
+    .section-eyebrow {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent3);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.9rem, 4vw, 2.8rem); font-weight: 700; line-height: 1.2;
+    }
+    .section-sub { color: var(--muted); margin-top: 14px; font-size: 1rem; max-width: 520px; margin-inline: auto; line-height: 1.7; }
+
+    /* ─── SERVICES ───────────────────────────────────────────── */
+    #services { background: rgba(255,255,255,0.015); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px; max-width: 1100px; margin: 0 auto;
+    }
+    .service-card {
+      padding: 32px 26px; transition: transform var(--transition), box-shadow var(--transition);
+      cursor: default;
+    }
+    .service-card:hover { transform: translateY(-8px); }
+    .service-icon {
+      width: 58px; height: 58px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; margin-bottom: 20px;
+      position: relative; overflow: hidden;
+    }
+    .service-icon::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      opacity: 0.18; border-radius: inherit;
+    }
+    .service-icon i { position: relative; z-index: 1; color: var(--accent); }
+    .service-card:nth-child(2) .service-icon i { color: var(--accent2); }
+    .service-card:nth-child(3) .service-icon i { color: var(--accent3); }
+    .service-card:nth-child(4) .service-icon i { color: #ff6b6b; }
+    .service-card:nth-child(5) .service-icon i { color: #ffd166; }
+    .service-card:nth-child(6) .service-icon i { color: #a29bfe; }
+    .service-card:nth-child(7) .service-icon i { color: var(--accent3); }
+    .service-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 600; margin-bottom: 10px; }
+    .service-desc { font-size: 0.87rem; color: var(--muted); line-height: 1.6; }
+    .service-tag {
+      display: inline-block; margin-top: 14px;
+      padding: 4px 12px; border-radius: 50px;
+      background: rgba(59,158,255,0.1); border: 1px solid rgba(59,158,255,0.2);
+      font-size: 0.72rem; font-weight: 600; color: var(--accent);
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── ABOUT ──────────────────────────────────────────────── */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+      max-width: 1000px; margin: 0 auto;
+    }
+    .about-visual {
+      position: relative; border-radius: var(--radius); overflow: hidden;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, rgba(59,158,255,0.12), rgba(124,92,252,0.12));
+      border: 1px solid var(--glass-border);
+      display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px;
+    }
+    .about-icon-big { font-size: 5rem; color: var(--accent); opacity: 0.4; }
+    .about-visual-text { font-size: 0.85rem; color: var(--muted); }
+    .about-badges { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; }
+    .about-badge-pill {
+      padding: 6px 14px; border-radius: 50px;
+      background: rgba(0,229,195,0.15); border: 1px solid rgba(0,229,195,0.3);
+      font-size: 0.75rem; font-weight: 600; color: var(--accent3); white-space: nowrap;
+    }
+    .about-content h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; line-height: 1.25; margin-bottom: 18px;
+    }
+    .about-content p { color: var(--muted); line-height: 1.8; margin-bottom: 18px; font-size: 0.95rem; }
+    .about-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+    .about-features li {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 0.9rem; color: var(--text);
+    }
+    .about-features li i { color: var(--accent3); font-size: 0.85rem; }
+
+    /* ─── TESTIMONIALS ───────────────────────────────────────── */
+    #testimonials { background: rgba(255,255,255,0.015); }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      gap: 22px; max-width: 1000px; margin: 0 auto;
+    }
+    .testimonial-card { padding: 28px; }
+    .stars { color: #ffd166; font-size: 0.85rem; margin-bottom: 14px; letter-spacing: 3px; }
+    .testimonial-text { font-size: 0.92rem; color: var(--muted); line-height: 1.75; font-style: italic; margin-bottom: 20px; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 700; color: #fff; flex-shrink: 0;
+    }
+    .author-name { font-weight: 600; font-size: 0.9rem; }
+    .author-loc { font-size: 0.75rem; color: var(--muted); }
+
+    /* ─── GALLERY ────────────────────────────────────────────── */
+    .gallery-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+      gap: 16px; max-width: 1000px; margin: 0 auto;
+    }
+    .gallery-item {
+      aspect-ratio: 1; border-radius: 16px;
+      background: linear-gradient(135deg, rgba(59,158,255,0.1), rgba(124,92,252,0.1));
+      border: 1px solid var(--glass-border);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 10px; cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition);
+      overflow: hidden; position: relative;
+    }
+    .gallery-item:hover { transform: scale(1.04); box-shadow: 0 0 30px var(--glow); }
+    .gallery-item i { font-size: 2.8rem; opacity: 0.45; }
+    .gallery-item:nth-child(1) i { color: var(--accent); }
+    .gallery-item:nth-child(2) i { color: var(--accent3); }
+    .gallery-item:nth-child(3) i { color: var(--accent2); }
+    .gallery-item:nth-child(4) i { color: #ffd166; }
+    .gallery-item:nth-child(5) i { color: #ff6b6b; }
+    .gallery-item:nth-child(6) i { color: var(--accent3); }
+    .gallery-label { font-size: 0.78rem; color: var(--muted); font-weight: 500; }
+
+    /* ─── CONTACT ────────────────────────────────────────────── */
+    #contact { background: rgba(255,255,255,0.015); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 36px; max-width: 1000px; margin: 0 auto;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 18px; }
+    .contact-card { padding: 22px 24px; display: flex; align-items: center; gap: 18px; transition: var(--transition); }
+    .contact-card:hover { transform: translateX(6px); }
+    .contact-card-icon {
+      width: 50px; height: 50px; border-radius: 14px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+    }
+    .cicon-blue { background: rgba(59,158,255,0.15); color: var(--accent); }
+    .cicon-green { background: rgba(0,229,195,0.15); color: var(--accent3); }
+    .cicon-purple { background: rgba(124,92,252,0.15); color: var(--accent2); }
+    .cicon-orange { background: rgba(255,107,107,0.15); color: #ff6b6b; }
+    .contact-card-detail .label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px; }
+    .contact-card-detail .value { font-size: 0.95rem; font-weight: 600; }
+    .map-container {
+      border-radius: var(--radius); overflow: hidden;
+      border: 1px solid var(--glass-border);
+      background: var(--glass-bg); backdrop-filter: var(--glass-blur); min-height: 340px;
+    }
+    .map-container iframe { width: 100%; height: 100%; min-height: 340px; border: 0; display: block; }
+    .contact-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 6px; }
+    .btn-call {
+      flex: 1; min-width: 140px; padding: 14px 20px; border-radius: 50px; text-align: center;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      font-weight: 600; font-size: 0.9rem; color: #fff;
+      display: flex; align-items: center; justify-content: center; gap: 9px;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-call:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(59,158,255,0.4); }
+    .btn-wa {
+      flex: 1; min-width: 140px; padding: 14px 20px; border-radius: 50px; text-align: center;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      font-weight: 600; font-size: 0.9rem; color: #fff;
+      display: flex; align-items: center; justify-content: center; gap: 9px;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-wa:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(37,211,102,0.4); }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--glass-border);
+      padding: 40px 5%; text-align: center;
+      color: var(--muted); font-size: 0.82rem;
+    }
+    footer strong { color: var(--accent); }
+
+    /* ─── FLOATING WHATSAPP ──────────────────────────────────── */
+    .float-wa {
+      position: fixed; bottom: 28px; right: 28px; z-index: 200;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; color: #fff;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.55);
+      transition: transform var(--transition);
+      animation: pulse-wa 2.5s ease infinite;
+    }
+    .float-wa:hover { transform: scale(1.12); }
+    @keyframes pulse-wa {
+      0%,100% { box-shadow: 0 6px 24px rgba(37,211,102,0.55); }
+      50%       { box-shadow: 0 6px 36px rgba(37,211,102,0.85); }
+    }
+
+    /* ─── SCROLL REVEAL ──────────────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .about-visual { min-height: 220px; }
+      .hero-stats { gap: 28px; }
+    }
+    @media (max-width: 480px) {
+      section { padding: 70px 4%; }
+      .gallery-grid { grid-template-columns: repeat(2,1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Ambient orbs -->
+<div class="bg-orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<!-- ─── NAV ─────────────────────────────────────────────────── -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <i class="fas fa-bolt"></i>
+    Raj Electronics
+  </div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:9823627440" class="nav-cta"><i class="fas fa-phone-alt"></i> Call Now</a>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="toggleMenu()">🏠 Home</a>
+  <a href="#services" onclick="toggleMenu()">🔧 Services</a>
+  <a href="#about" onclick="toggleMenu()">👤 About</a>
+  <a href="#testimonials" onclick="toggleMenu()">⭐ Reviews</a>
+  <a href="#contact" onclick="toggleMenu()">📞 Contact</a>
+  <a href="tel:9823627440" style="color:var(--accent3);font-weight:700;">📱 Call: 9823627440</a>
+</div>
+
+<!-- ─── HERO ──────────────────────────────────────────────────── -->
+<section id="home">
+  <div class="hero-inner">
+    <div class="hero-badge"><i class="fas fa-wrench"></i> Trusted Local Repair Experts</div>
+    <h1 class="hero-title">
+      Fast & Trusted<br>
+      <span class="grad">Electronics Repair</span><br>
+      in Marki, Maharashtra
+    </h1>
+    <p class="hero-sub">
+      Expert repair of TVs, Mobiles, Refrigerators, Washing Machines and more —
+      done right at your doorstep or in-shop by Rajendra Bire with 15+ years of experience.
+    </p>
+    <div class="hero-btns">
+      <a href="tel:9823627440" class="btn-primary"><i class="fas fa-phone-alt"></i> Get Repair Now</a>
+      <a href="https://wa.me/919823627440?text=Hello%2C%20I%20need%20electronics%20repair" class="btn-ghost" target="_blank">
+        <i class="fab fa-whatsapp"></i> WhatsApp Us
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Years Experience</div></div>
+      <div class="stat"><div class="stat-num">2000+</div><div class="stat-label">Devices Repaired</div></div>
+      <div class="stat"><div class="stat-num">7</div><div class="stat-label">Services Offered</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Local Trust</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ─────────────────────────────────────────────── -->
+<section id="services">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">What We Fix</div>
+    <h2 class="section-title">Our Repair Services</h2>
+    <p class="section-sub">All major electronics and electrical appliances repaired with genuine parts and quality workmanship.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card glass reveal">
+      <div class="service-icon"><i class="fas fa-tv"></i></div>
+      <div class="service-name">TV Repair</div>
+      <div class="service-desc">LED, LCD, Smart TV — picture issues, no power, sound faults, remote problems. All brands.</div>
+      <span class="service-tag">All Brands</span>
+    </div>
+    <div class="service-card glass reveal">
+      <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+      <div class="service-name">Mobile Repair</div>
+      <div class="service-desc">Screen replacement, battery, charging port, software and motherboard repairs done swiftly.</div>
+      <span class="service-tag">Android & iOS</span>
+    </div>
+    <div class="service-card glass reveal">
+      <div class="service-icon"><i class="fas fa-snowflake"></i></div>
+      <div class="service-name">Refrigerator Repair</div>
+      <div class="service-desc">Cooling issues, compressor faults, gas refilling, thermostat, and ice maker problems fixed.</div>
+      <span class="service-tag">Single & Double Door</span>
+    </div>
+    <div class="service-card glass reveal">
+      <div class="service-icon"><i class="fas fa-tshirt"></i></div>
+      <div class="service-name">Washing Machine</div>
+      <div class="service-desc">Fully automatic, semi-automatic — drum issues, drainage, PCB board and motor repair.</div>
+      <span class="service-tag">Top & Front Load</span>
+    </div>
+    <div class="service-card glass reveal">
+      <div class="service-icon"><i class="fas fa-wind"></i></div>
+      <div class="service-name">Fan Repair</div>
+      <div class="service-desc">Ceiling, table, wall and exhaust fans — motor winding, capacitor and speed controller repair.</div>
+      <span class="service-tag">All Types</span>
+    </div>
+    <div class="service-card glass reveal">
+      <div class="service-icon"><i class="fas fa-blender"></i></div>
+      <div class="service-name">Mixer / Grinder</div>
+      <div class="service-desc">Jar leakage, blade replacement, motor rewinding, overload tripping and wiring fixes.</div>
+      <span class="service-tag">All Brands</span>
+    </div>
+    <div class="service-card glass reveal">
+      <div class="service-icon"><i class="fas fa-plug"></i></div>
+      <div class="service-name">General Electronics</div>
+      <div class="service-desc">Water heaters, irons, induction cooktops, stabilizers and other home electrical appliances.</div>
+      <span class="service-tag">Home Appliances</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─────────────────────────────────────────────────── -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual reveal">
+      <i class="fas fa-microchip about-icon-big"></i>
+      <div class="about-visual-text">Skilled hands. Honest repairs.</div>
+      <div class="about-badges">
+        <div class="about-badge-pill"><i class="fas fa-check-circle"></i> Certified</div>
+        <div class="about-badge-pill"><i class="fas fa-shield-alt"></i> Trusted</div>
+        <div class="about-badge-pill"><i class="fas fa-star"></i> 5★ Reviews</div>
+      </div>
+    </div>
+    <div class="about-content reveal">
+      <h2>Your Neighbourhood<br><span style="color:var(--accent3)">Repair Expert</span></h2>
+      <p>
+        Raj Electronics & Electricals has been serving the families of Marki and surrounding villages in Maharashtra for over 15 years. Founded by <strong>Rajendra Bire</strong>, the shop has built a reputation for honest, affordable, and long-lasting repairs.
+      </p>
+      <p>
+        From a broken television to a silent washing machine — we believe every appliance deserves a second life. We use quality spare parts and always explain the problem to our customers before starting any repair.
+      </p>
+      <ul class="about-features">
+        <li><i class="fas fa-check-circle"></i> Transparent pricing — no hidden charges</li>
+        <li><i class="fas fa-check-circle"></i> Same-day repair for most issues</li>
+        <li><i class="fas fa-check-circle"></i> Genuine spare parts used always</li>
+        <li><i class="fas fa-check-circle"></i> Home visit available on request</li>
+        <li><i class="fas fa-check-circle"></i> 30-day service warranty on all repairs</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ──────────────────────────────────────────── -->
+<section id="testimonials">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Customer Stories</div>
+    <h2 class="section-title">What People Say</h2>
+    <p class="section-sub">Trusted by hundreds of families across Marki and nearby villages in Maharashtra.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card glass reveal">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"My Samsung TV had no picture at all. Rajendra bhai fixed it in less than 2 hours. Very reasonable charge and honest work. Highly recommend!"</div>
+      <div class="testimonial-author">
+        <div class="avatar">S</div>
+        <div><div class="author-name">Suresh Patil</div><div class="author-loc">Marki, Maharashtra</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card glass reveal">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"Fridge wasn't cooling for 3 days. Called Raj Electronics and they came home the same day, refilled the gas and now it works perfectly. Great service!"</div>
+      <div class="testimonial-author">
+        <div class="avatar" style="background:linear-gradient(135deg,var(--accent3),var(--accent))">P</div>
+        <div><div class="author-name">Priya Deshmukh</div><div class="author-loc">Nearby village</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card glass reveal">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"Washing machine motor was gone. Rajendra sir explained everything clearly, gave fair price and completed work on time. Very trustworthy shop."</div>
+      <div class="testimonial-author">
+        <div class="avatar" style="background:linear-gradient(135deg,var(--accent2),#ff6b6b)">R</div>
+        <div><div class="author-name">Ramesh Shinde</div><div class="author-loc">Marki, Maharashtra</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── GALLERY ───────────────────────────────────────────────── -->
+<section id="gallery">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Our Work</div>
+    <h2 class="section-title">Repair Gallery</h2>
+    <p class="section-sub">Devices we've brought back to life — every repair done with care and precision.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item reveal"><i class="fas fa-tv"></i><div class="gallery-label">TV Board Repair</div></div>
+    <div class="gallery-item reveal"><i class="fas fa-mobile-alt"></i><div class="gallery-label">Mobile Screen Fix</div></div>
+    <div class="gallery-item reveal"><i class="fas fa-snowflake"></i><div class="gallery-label">Fridge Compressor</div></div>
+    <div class="gallery-item reveal"><i class="fas fa-tshirt"></i><div class="gallery-label">Washing Machine</div></div>
+    <div class="gallery-item reveal"><i class="fas fa-wind"></i><div class="gallery-label">Ceiling Fan Motor</div></div>
+    <div class="gallery-item reveal"><i class="fas fa-blender"></i><div class="gallery-label">Mixer Rewinding</div></div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ───────────────────────────────────────────────── -->
+<section id="contact">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Get In Touch</div>
+    <h2 class="section-title">Visit or Call Us</h2>
+    <p class="section-sub">Located in Marki, Maharashtra. Reach us by phone, WhatsApp, or walk in anytime.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-card glass reveal">
+        <div class="contact-card-icon cicon-blue"><i class="fas fa-phone-alt"></i></div>
+        <div class="contact-card-detail">
+          <div class="label">Phone</div>
+          <div class="value">+91 98236 27440</div>
+        </div>
+      </div>
+      <div class="contact-card glass reveal">
+        <div class="contact-card-icon cicon-green"><i class="fab fa-whatsapp"></i></div>
+        <div class="contact-card-detail">
+          <div class="label">WhatsApp</div>
+          <div class="value">+91 98236 27440</div>
+        </div>
+      </div>
+      <div class="contact-card glass reveal">
+        <div class="contact-card-icon cicon-purple"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="contact-card-detail">
+          <div class="label">Shop Address</div>
+          <div class="value">Marki, Maharashtra, India</div>
+        </div>
+      </div>
+      <div class="contact-card glass reveal">
+        <div class="contact-card-icon cicon-orange"><i class="fas fa-clock"></i></div>
+        <div class="contact-card-detail">
+          <div class="label">Working Hours</div>
+          <div class="value">Mon–Sat: 9 AM – 8 PM</div>
+        </div>
+      </div>
+      <div class="contact-btns reveal">
+        <a href="tel:9823627440" class="btn-call"><i class="fas fa-phone-alt"></i> Call Now</a>
+        <a href="https://wa.me/919823627440?text=Hello%2C%20I%20need%20electronics%20repair" target="_blank" class="btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      </div>
+    </div>
+    <div class="map-container reveal">
+      <!-- Google Map embed for Marki, Maharashtra -->
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30120.0!2d77.7523!3d20.9320!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd6be5dc1f5e0e1%3A0x82fe6cc08fd49c60!2sMarki%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Raj Electronics Location - Marki Maharashtra">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────── -->
+<footer>
+  <p style="margin-bottom:6px;font-size:1rem;font-weight:600;color:var(--text)">
+    <strong>Raj Electronics & Electricals</strong>
+  </p>
+  <p style="margin-bottom:12px;">Owner: Rajendra Bire &nbsp;|&nbsp; Marki, Maharashtra &nbsp;|&nbsp; <a href="tel:9823627440" style="color:var(--accent3)">9823627440</a></p>
+  <p>© 2025 Raj Electronics & Electricals. Electronics &amp; Appliance Repair in Marki, Maharashtra.</p>
+</footer>
+
+<!-- ─── FLOATING WHATSAPP ───────────────────────────────────── -->
+<a href="https://wa.me/919823627440?text=Hello%2C%20I%20need%20electronics%20repair" class="float-wa" target="_blank" title="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+  // ── Mobile menu toggle
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  // Close menu on outside click
+  document.addEventListener('click', e => {
+    const menu = document.getElementById('mobileMenu');
+    const ham  = document.getElementById('hamburger');
+    if (menu.classList.contains('open') && !menu.contains(e.target) && !ham.contains(e.target)) {
+      menu.classList.remove('open');
+    }
+  });
+
+  // ── Scroll-reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // ── Nav scroll shadow
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').style.boxShadow =
+      window.scrollY > 40 ? '0 4px 30px rgba(0,0,0,0.4)' : 'none';
+  });
+</script>
+</body>
+</html>
